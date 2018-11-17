@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/css/styles.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+</head>
+
+<body>
+    <!--navbar-->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project Daily Reports</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!--link to homepage and create reports-->
+                    <li class="active"><a href="/">Home Page</a></li>
+                    <li><a href="/createreport">Create Reports</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <h1>Employee's Status Report</h1>
+            <p class="lead">This page shows the list of last ten entered reports </p>
+        </div>
+        <div>
+            <!--Latest Reports-->
+            <div class="container">
+                <!--Search reports by reporter name-->
+                <div class="row">
+                    <div class="col-md-12 column">
+                        <form action="/" method="post">
+                            <div class="col-md-3 column">
+                                <!--Display all the reporters added in the drop-down-->
+                                <select id="employeeName" name="employeeName" class="form-control">
+                                    {% for reporter in reporters %}
+                                    <option value="{{ reporter.reporterName }}">{{ reporter.reporterName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-3 column">
+                                <!-- Find by Name Button -->
+                                <button id="btnSearchReportsByName" name="btnSearchReportsByName" class="btn btn-warning"
+                                    type="submit">Find by Name</button>
+                            </div>
+                        </form>
+                        <form action="/" method="post">
+                            <div class="col-md-3 column">
+                                <!--Display all the project names added in the drop-down-->
+                                <select id="projectTitle" name="projectTitle" class="form-control">
+                                    {% for project in projects %}
+                                    <option value="{{ project.projectName }}">{{ project.projectName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-3 column">
+                                <!-- Find by Project Button -->
+                                <button id="btnSearchReportsByProjects" name="btnSearchReportsByProject" class="btn btn-warning"
+                                    type="submit">Find by Project</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br />         
+        </div>
+    </div><!-- /.container -->
+</body>
+
+</html>

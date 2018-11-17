@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/css/styles.css' />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project Daily Report</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home Page</a></li>
+                    <li class="active"><a href="/createreport">Create Report</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <h3>Enter your project daily report</h3>
+        </div>
+        <!--Creating status report form-->
+        <form class="form-horizontal" action="createReport" method="post">
+            <fieldset>    
+                <!-- Selecting reporter name from the drop-down -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Reporter<sup>*</sup></label>
+                    <div class="col-md-4">
+                        <select id="employeeName" name="employeeName" class="form-control">
+                            <option value="selectName">(Choose your name)</option>
+                            {% for reporter in reporters %}
+                            <option value="{{ reporter.reporterName }}" name="employeeName">{{ reporter.reporterName }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <!-- Selecting project name from the drop-down -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="project">Project Name<sup>*</sup></label>
+                    <div class="col-md-4">
+                        <select id="project" name="project" class="form-control">
+                            <option value="None">(Choose your project )</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Textarea for completed tasks -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="completedTasks">Completed task(s)<sup>*</sup></label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="completedTasks" name="completedTasks"></textarea>
+                    </div>
+                </div>
+                <!-- Textarea for tasks in progress -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="tasksInProgress">Task(s) in progress<sup>*</sup></label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="tasksInProgress" name="tasksInProgress"></textarea> 
+                    </div>
+                </div>
+                <!-- Textarea for obstacles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="obstacle">Any obstacle(s)?</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="obstacle" name="obstacle"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- Date input -->
+                    <label class="col-md-4 control-label" for="date">Date<sup>*</sup></label>
+                    <div class="col-md-4">
+                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="date" />
+                    </div>
+                </div>
+                <!-- Textarea for next tasks -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nextTask">Next task<sup>*</sup></label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="nextTask" name="nextTask"></textarea>
+                    </div>
+                </div>
+                <!-- submit button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="btnSubmitReport">Submit</label>
+                    <div class="col-md-4">
+                        <button id="btnSubmitReport" name="btnSubmitReport" class="btn btn-warning" type="submit">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div><!-- /.container -->
+</body>
+
+</html>
