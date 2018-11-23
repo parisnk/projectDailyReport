@@ -44,7 +44,7 @@
                         <form action="/" method="post">
                             <div class="col-md-3 column">
                                 <!--Display all the reporters added in the drop-down-->
-                                <select id="employeeName" name="employeeName" class="form-control">
+                                <select id="memberName" name="memberName" class="form-control">
                                     {% for reporter in reporters %}
                                     <option value="{{ reporter.reporterName }}">{{ reporter.reporterName }}</option>
                                     {% endfor %}
@@ -71,6 +71,23 @@
                                     type="submit">Find by Project</button>
                             </div>
                         </form>
+                    </div>
+                    <br />
+                    <div class="container">
+                        <div class="col-md-12 column list-group">
+                            {% for dailyReport in dailyReports %}
+                            <div class="list-group-item">
+                                <div>Report created by: <em><strong>{{ dailyReport.memberName }}</strong></em>
+                                    Created date: {{ dailyReport.createdOn.toDateString() }}</div>
+                                <div><strong>Project name:</strong> {{ dailyReport.project }}</div>
+                                <div><strong>Completed tasks:</strong> {{ dailyReport.completedTasks }}</div>
+                                <div><strong>Tasks in progress:</strong> {{ dailyReport.tasksInProgress }}</div>
+                                <div><strong>Obstacles:</strong> {{ dailyReport.obstacles }}</div>
+                                <div><strong>Estimated Projected date:</strong> {{ dailyReport.estimatedProjectedDate }}</div>
+                                <div><strong>Next task:</strong> {{ dailyReport.nextTask }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

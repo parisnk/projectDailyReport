@@ -32,6 +32,12 @@
         <div class="text-center">
             <h3>Enter your project daily report</h3>
         </div>
+        <!-- Show Validation errors Here -->
+        {% if messageError.length > 0 %}
+        <div class="alert alert-danger alert-error">
+            {{ messageError }}
+        </div>
+        {% endif %}
         <!--Creating status report form-->
         <form class="form-horizontal" action="createReport" method="post">
             <fieldset>    
@@ -39,7 +45,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Reporter<sup>*</sup></label>
                     <div class="col-md-4">
-                        <select id="employeeName" name="employeeName" class="form-control">
+                        <select id="memberName" name="memberName" class="form-control">
                             <option value="selectName">(Choose your name)</option>
                             {% for reporter in reporters %}
                             <option value="{{ reporter.reporterName }}" name="employeeName">{{ reporter.reporterName }}</option>
