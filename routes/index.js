@@ -6,7 +6,8 @@ var reportsCtrl = require('../controllers/reports.Ctrl');
 router.get('/', function(req, res){
   res.render('index'); 
 });
-//creating routes for rendering create report page
-router.get('/createreport', reportsCtrl.allMembersReports);
+// creating routes for rendering createreport page and data for reporters and
+// projects drop-downs
+router.get('/createreport', reportsCtrl.allMembersReports, reportsCtrl.allProjects);
 //export router
 module.exports = router;

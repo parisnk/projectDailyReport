@@ -57,8 +57,11 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="project">Project Name<sup>*</sup></label>
                     <div class="col-md-4">
-                        <select id="project" name="project" class="form-control">
-                            <option value="None">(Choose your project )</option>
+                        <select id="projectTitle" name="projectTitle" class="form-control">
+                            <option value="selectProject">(Choose your project )</option>
+                            {% for project in projects %}
+                            <option value="{{ project.projectName }}" name="projectTitle">{{ project.projectName }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
