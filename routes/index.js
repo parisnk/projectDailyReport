@@ -3,12 +3,11 @@ var router = express.Router();
 var reportsCtrl = require('../controllers/reports.Ctrl');
 
 //creating routes for rendering home page
-router.get('/', function(req, res){
-  res.render('index');
-});
-// creating routes for rendering createreport page and data for reporters and
-// projects drop-downs
-// router.get('/createreport', reportsCtrl.allMembersReports, reportsCtrl.allProjects);
-router.get('/createreport', reportsCtrl.allMembersReportsAndProjects);
+router.get('/', asyncCtrl.reportData);
+//creating route for getting reporters and project names
+router.get('/createreport', reportsCtrl.getReportersAndProjects);
+//creating routes for posting reports
+router.post('/createreport', reportsCtrl.createReport);
+
 //export router
 module.exports = router;
