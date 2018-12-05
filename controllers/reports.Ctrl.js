@@ -4,6 +4,7 @@ var DailyReport = require('../models/DailyReport.model');
 var Reporter = require('../models/Reporter.model');
 var Project = require('../models/Project.model');
 
+// Received contribution for this function from RicardoGonzalezJ in my GitHub https://github.com/parisnk/projectDailyReport/pull/9
 exports.getReportersAndProjects = function (req, res) {
   
     Reporter
@@ -58,4 +59,3 @@ exports.createReport = function (req, res) {
         }
     });
 }
-
