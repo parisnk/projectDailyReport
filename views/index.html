@@ -32,7 +32,7 @@
     </div>
     <div class="container">
         <div class="text-center">
-            <h1>Employee's Status Report</h1>
+            <h1>Employee's Daily Reports</h1>
             <p class="lead">This page shows the list of last ten entered reports </p>
         </div>
         <div>
@@ -54,23 +54,23 @@
                                 <!-- Find by Name Button -->
                                 <button id="btnSearchReportsByName" name="btnSearchReportsByName" class="btn btn-warning"
                                     type="submit">Find by Name</button>
-                            </div>
+                             </div>
                         </form>
-                        <form action="/" method="post">
-                            <div class="col-md-3 column">
+                        <form action="/" method="post" name="project">
+                           <div class="col-md-3 column">
                                 <!--Display all the project names added in the drop-down-->
-                                <select id="projectTitle" name="projectTitle" class="form-control">
-                                    {% for project in projects %}
-                                    <option value="{{ project.projectName }}">{{ project.projectName }}</option>
-                                    {% endfor %}
+                                 <select id="projectTitle" name="projectTitle" class="form-control">
+                                       {% for project in projects %}
+                                      <option value="{{ project.projectName }}">{{ project.projectName }}</option>
+                                       {% endfor %}
                                 </select>
-                            </div>
-                            <div class="col-md-3 column">
-                                <!-- Find by Project Button -->
-                                <button id="btnSearchReportsByProjects" name="btnSearchReportsByProject" class="btn btn-warning"
-                                    type="submit">Find by Project</button>
-                            </div>
-                        </form>
+                           </div>
+                           <div class="col-md-3 column">
+                    <!-- Find by Project Button -->
+                           <button id="btnSearchReportsByProjects" name="btnSearchReportsByProject" class="btn btn-warning" type="submit">Find
+                            by Project</button>
+                           </div>
+                         </form>
                     </div>
                     <br />
                     <div class="container">
@@ -79,11 +79,11 @@
                             <div class="list-group-item">
                                 <div>Report created by: <em><strong>{{ dailyReport.memberName }}</strong></em>
                                     Created date: {{ dailyReport.createdOn.toDateString() }}</div>
-                                <div><strong>Project name:</strong> {{ dailyReport.project }}</div>
+                                <div><strong>Project name:</strong> {{ dailyReport.projectTitle }}</div>
                                 <div><strong>Completed tasks:</strong> {{ dailyReport.completedTasks }}</div>
                                 <div><strong>Tasks in progress:</strong> {{ dailyReport.tasksInProgress }}</div>
                                 <div><strong>Obstacles:</strong> {{ dailyReport.obstacles }}</div>
-                                <div><strong>Estimated Projected date:</strong> {{ dailyReport.estimatedProjectedDate }}</div>
+                                <!--<div><strong>Estimated Projected date:</strong> {{ dailyReport.estimatedProjectedDate }}</div>-->
                                 <div><strong>Next task:</strong> {{ dailyReport.nextTask }}</div>
                             </div>
                             {% endfor %}

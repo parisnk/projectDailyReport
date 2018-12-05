@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var reportsCtrl = require('../controllers/reports.Ctrl');
+var asyncCtrl = require('../controllers/async.Ctrl');
 
 //creating routes for rendering home page
 router.get('/', asyncCtrl.reportData);

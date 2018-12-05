@@ -5,16 +5,26 @@ var memberNameValidator = [
     function (val) {
         return (val.length > 0 && val != '(Choose your name)');
     },
-    //custom error message
-    'Select a valid member name.'
+    //error message for the reporter name
+    'Select a valid reporter name.'
+];
+
+var projectNameValidator = [
+    function (val) {
+        return (val.length > 0 && val != '(Choose your project)');
+    },
+    //error message for the project name
+    'Select a valid project name.'
 ];
 var dailyReportSchema = new Schema({
     memberName: {
         type: String,
-        validate : memberNameValidator
+        validate : memberNameValidator,
+        required: true
     },
     projectTitle: {
         type: String,
+        validate: projectNameValidator,
         required: true
     },
     completedTasks: {
@@ -29,9 +39,9 @@ var dailyReportSchema = new Schema({
         type: String,
         default: 'none'
     },
-    estimatedProjectedDate: {
-        type: Date,
-        required: true
+    nextTask : {
+        type: String,
+        default: 'none'
     },
     createdOn: {
         type: Date,
