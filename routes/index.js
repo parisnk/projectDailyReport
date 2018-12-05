@@ -9,5 +9,6 @@ router.get('/', asyncCtrl.reportData);
 router.get('/createreport', reportsCtrl.getReportersAndProjects);
 //creating routes for posting reports
 router.post('/createreport', reportsCtrl.createReport);
+
 //export router
 module.exports = router;

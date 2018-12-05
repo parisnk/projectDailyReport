@@ -5,6 +5,7 @@ var Reporter = require('../models/Reporter.model');
 var Project = require('../models/Project.model');
 
 exports.getReportersAndProjects = function (req, res) {
+  
     Reporter
         .find({})
         .sort({ reporterName: 1 })
@@ -13,24 +14,26 @@ exports.getReportersAndProjects = function (req, res) {
             if (err) {
                 console.log('getting error in getting reporters names');
             } else {
-                //Find all the projects
-                Project
-                    .find({})
-                    .sort({ projectName: 1 })
-                    .exec(function (err, projects) {
-                        if (err) {
-                            console.log('getting error in getting projects names');
-                        } else {
-                            res.render('createReport', {
-                                title: 'Create Report',
-                                reporters: reporters,
-                                projects: projects
-                            });
-                        }
-                    });
-            }
-        });
+
+              //Find all the projects
+              Project
+                  .find({})
+                  .sort({ projectName: 1 })
+                  .exec(function (err, projects) {
+                      if (err) {
+                          console.log('getting error in getting projects names');
+                      } else {
+                          res.render('createReport', {
+                              title: 'Create Report',
+                              reporters: reporters,
+                              projects: projects
+                          });
+                      }
+                  });
+          }
+      });
 }
+
 exports.createReport = function (req, res) {
     //Creating a new report
     var newReport = new DailyReport();
@@ -54,4 +57,5 @@ exports.createReport = function (req, res) {
             res.redirect(301, '/');
         }
     });
-};
+}
+
