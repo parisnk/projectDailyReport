@@ -24,7 +24,7 @@ exports.getReportersAndProjects = function (req, res) {
                       if (err) {
                           console.log('getting error in getting projects names');
                       } else {
-                          res.render('createReport', {
+                          res.render('createreport', {
                               title: 'Create Report',
                               reporters: reporters,
                               projects: projects
@@ -34,7 +34,40 @@ exports.getReportersAndProjects = function (req, res) {
           }
       });
 }
+//Filter reports by the reporter
+exports.dailyReportByReporter = function (req, res) {
+    var query = DailyReport.find({});
+    var filter = req.body.memberName;
 
+    if (filter === 0) {
+        console.log('No daily reports were found');
+    } else {
+        query
+            .where({ memberName: filter })
+
+            .sort({ createdOn: 'desc' })
+            .exec(function (err, results) {
+                res.render('reporterresult', { dailyReports: results });
+            });
+    }
+
+};
+//Filter reports by the project name
+exports.dailyReportByProject = function (req, res) {
+    var query = DailyReport.find({});
+    var filter = req.body.projectTitle;
+
+    if (filter === 0) {
+        console.log('No daily reports were found');
+    } else {
+        query
+            .where({ projectTitle: filter })
+            .sort({ createdOn: 'desc' })
+            .exec(function (err, results) {
+                res.render('projectresult', { dailyReports: results });
+            });
+    }
+};
 exports.createReport = function (req, res) {
     //Creating a new report
     var newReport = new DailyReport();
@@ -49,7 +82,7 @@ exports.createReport = function (req, res) {
         if (err) {
             //Validation error is saving daily reports
             var errMessage = 'Sorry there was an error saving' + err;
-            res.render('createReport', {
+            res.render('createreport', {
                 title: 'Report - create report (error)',
                 messageError: errMessage
             });

@@ -14,7 +14,7 @@ var db = 'mongodb://localhost/projectDailyReport';
 var routes = require('./routes/index');
 
 //connect to mongoDB
-mongoose.connect(db,{useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || db, {useNewUrlParser: true});
 
 //  This is where all the magic happens! using Swig template for displaying views 
 var swig = require('swig');
@@ -34,6 +34,6 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', routes);
 //listening to port 8080
-app.listen(port, function () {
-console.log('Application Started on port ' + port);
-});
+app.listen(process.env.PORT || port, function () {
+        console.log('Application Started on port ', (process.env.PORT || port));
+    });

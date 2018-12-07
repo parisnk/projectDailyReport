@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project Daily Reports</a>
+                <a class="navbar-brand" href="/">Project Daily Reports</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -41,7 +41,7 @@
                 <!--Search reports by reporter name-->
                 <div class="row">
                     <div class="col-md-12 column">
-                        <form action="/" method="post">
+                        <form action="/reporterresult" method="post">
                             <div class="col-md-3 column">
                                 <!--Display all the reporters added in the drop-down-->
                                 <select id="memberName" name="memberName" class="form-control">
@@ -56,7 +56,7 @@
                                     type="submit">Find by Name</button>
                              </div>
                         </form>
-                        <form action="/" method="post" name="project">
+                        <form action="/projectresult" method="post" name="project">
                            <div class="col-md-3 column">
                                 <!--Display all the project names added in the drop-down-->
                                  <select id="projectTitle" name="projectTitle" class="form-control">
@@ -73,6 +73,7 @@
                          </form>
                     </div>
                     <br />
+                    <!--Daily reports-->
                     <div class="container">
                         <div class="col-md-12 column list-group">
                             {% for dailyReport in dailyReports %}
@@ -83,7 +84,6 @@
                                 <div><strong>Completed tasks:</strong> {{ dailyReport.completedTasks }}</div>
                                 <div><strong>Tasks in progress:</strong> {{ dailyReport.tasksInProgress }}</div>
                                 <div><strong>Obstacles:</strong> {{ dailyReport.obstacles }}</div>
-                                <!--<div><strong>Estimated Projected date:</strong> {{ dailyReport.estimatedProjectedDate }}</div>-->
                                 <div><strong>Next task:</strong> {{ dailyReport.nextTask }}</div>
                             </div>
                             {% endfor %}
