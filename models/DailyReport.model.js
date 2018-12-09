@@ -41,7 +41,8 @@ var dailyReportSchema = new Schema({
     },
     nextTask : {
         type: String,
-        default: 'none'
+        default: 'none',
+        required: true
     },
     createdOn: {
         type: Date,
