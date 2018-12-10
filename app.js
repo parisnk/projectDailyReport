@@ -13,7 +13,7 @@ var db = 'mongodb://localhost/projectDailyReport';
 //routes
 var routes = require('./routes/index');
 
-//connect to mongoDB
+//connect to mLab in Horoku otherwise connect yo MongoDB locally
 mongoose.connect(process.env.MONGODB_URI || db, {useNewUrlParser: true});
 
 //  This is where all the magic happens! using Swig template for displaying views 
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/', routes);
-//listening to port 8080
+//use port 8080 unless there exists a pre-configured port
 app.listen(process.env.PORT || port, function () {
         console.log('Application Started on port ', (process.env.PORT || port));
     });
