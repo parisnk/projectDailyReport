@@ -5,7 +5,7 @@ var Reporter = require('../models/Reporter.model');
 var Project = require('../models/Project.model');
 var async = require('async');
 exports.reportData = function (req, res) {
-    //Gathering all the daily reports, reporters and projects
+    //Gathering all the daily reports, reporters and projects using async
     async.parallel([
         function (cb) {
             var query = DailyReport.find({});

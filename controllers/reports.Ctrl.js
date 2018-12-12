@@ -68,8 +68,8 @@ exports.dailyReportByProject = function (req, res) {
             });
     }
 };
+//Creating a new report
 exports.createReport = function (req, res) {
-    //Creating a new report
     var newReport = new DailyReport();
     newReport.memberName = req.body.memberName;
     newReport.projectTitle = req.body.projectTitle;
