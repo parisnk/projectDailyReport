@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var memberNameValidator = [
     function (val) {
-        return (val.length > 0 && val != '(Choose your name)');
+       return (val.length > 0 && val != 'selectName');
     },
     //error message for the reporter name
     'Select a valid reporter name.'
@@ -12,7 +12,7 @@ var memberNameValidator = [
 
 var projectNameValidator = [
     function (val) {
-        return (val.length > 0 && val != '(Choose your project)');
+       return (val.length > 0 && val != 'selectProject');
     },
     //error message for the project name
     'Select a valid project name.'
@@ -38,7 +38,7 @@ var dailyReportSchema = new Schema({
     },
     obstacles: {
         type: String,
-        default: 'none'
+        required : true
     },
     nextTask : {
         type: String,
