@@ -5,3 +5,12 @@ body {
     background-color:       #B8B8B8!important;
     color:                  #303D74 !important;
 }
+
+#brand-color {
+    color:          orange;
+    font-weight:    bold;
+}
+
+#result-title {
+    color:      lightslategray;
+}
