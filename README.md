@@ -11,3 +11,29 @@ Users of this application can be anyone who is involved in projects in any work 
 
 ## Benefits:
 This application can be a great tool to examine each person daily performance in doing his or her tasks and if there is a lack in one’s job, It can be justified to add more people to the project or even remove a person who is not doing his or her tasks as expected to.
+
+## Intructions to run the app locally:
+
+-You should run mongod and mongo along with running the application (by npm start)
+
+-Data at this stage for reporters and projects comes from the database
+
+-in mongoDB terminal window you should use the command 'use projectDailyReport' to create the database
+
+-For initial data for reporters collection use: 
+    db.reporters.insert
+	(
+		{
+			"reporterName" : Brad,
+		}
+	)
+-For initial data for projects collection use:
+
+    db.projects.insert
+    (
+		{
+			"projectName" : aboveground tanks,
+		}
+	)
+
+
